@@ -1,6 +1,6 @@
-# docker_jpwshd-debian10
+# docker-jpwshd-debian
 
-**Overview**
+## Overview
 
 Use a lts-debian-buster-slim image from Microsoft Powershell team with additional German locales to start a script (default or configured by environment variable).
 
@@ -10,11 +10,13 @@ This little framework can be used to start (looping) Powershell-Scripts in a wel
 
 In general this Dockerfile and the underlying simple scripts should run in 3 environments : Windows 10 native, Windows 10 WSL Ubuntu 20.04, Synology DSM718+ . I plan to extend this to be an multi-architecture docker image for my Raspberry 3/4 but need some learning how to achieve this.
 
-**Startup-Hook**
+## Startup-Hook
 
 The startup-hook is an implicite one. A standard Powershell profile "Microsoft.PowerShell_profile.ps1" willbe copied into the default directory (created in the Dockerfile) "/home/root/.config/powershell".
 
-**Core Files**
+The shell-code makes sure that the main functional loop will **only be started if no other instance** of a powershell is already running within its container. This behavior makes it possible to attach an interactive terminal into the running conatiner for debugging purposes.
+
+## Core Files
 
 * Dockerfile : based on Microsofts official Powershell image for Debian-Buster-LTS
 * Microsoft.PowerShell_profile.ps1 : Checking environment variable PWSHSCRIPTFILE and directory "/root/workdir" which is mounted to the docker host to decide which specific Powershell-script will be started
