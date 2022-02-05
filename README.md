@@ -12,7 +12,7 @@ In general this Dockerfile and the underlying simple scripts should run in 3 env
 
 ## Startup-Hook
 
-The startup-hook is an implicite one. A standard Powershell profile "Microsoft.PowerShell_profile.ps1" willbe copied into the default directory (created in the Dockerfile) "/home/root/.config/powershell".
+The startup-hook is an implicite one. A standard Powershell profile "Microsoft.PowerShell_profile.ps1" will be copied into the default directory (created in the Dockerfile) "/home/root/.config/powershell".
 
 The shell-code makes sure that the main functional loop will **only be started if no other instance** of a powershell is already running within its container. This behavior makes it possible to attach an interactive terminal into the running conatiner for debugging purposes.
 
