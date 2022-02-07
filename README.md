@@ -23,15 +23,15 @@ The shell-code makes sure that the main functional loop will **only be started i
 * JStandard.ps1 : small Powershell-script which will be copied from the image into workdir and being started if no valid combination to run from the environment-variable and directory-content is found
 * JMonitor.ps1 : The initial script I wrote for my client PC to monitor ICMP-performance of my internet connection. Based on a much older NT-CMD version. Target of this small docker project was to make this available in docker on my different servers (Synology NAS 718+, Raspberry Pi) to run idependently from my client workstation
 * do-Scripts : only to help me to remember build/save/run-commands several month later. I am not a developer which uses this stuff on a daily basis and I often forget details of created projects during time :-)
-    * `dobuild.sh` : Creates a new docker image based on current `Dockerfile`
-    * `dojmonitord.sh` : Runs a docker container with the image `weseit/pwshddebian11`
-    * `dorenamegitbranch.ps1` : Does git actions after a remote branch has been renamed
-    * `dosave.sh` : Saves the docker image `weseit/pwshddebian11` into `weseit_pwshddebian11.tar.gz` 
-    * `dosetgitremote.ps1` : set remote git url to a ssh based one
-    * `dotestjmonitord.ps1` : Runs a test container with working mounted to `./workdir` on Windows Powershell
-    * `dotestjmonitord.sh` : Outdated, May be reused later for another Linux environment to start a test container with specific path settings
-    * `dotestjmonitordnas.sh` : Runs a test container with working mounted to `./workdir` on my Synology NAS environment
-    * `JMonitor.ps1` : The main monitor Powershell script doing the ICMP/ping requests and writing data into the CSV-file for further processing.
-    * `JStandard.ps1` : Standard Powershell script in container. Writes startup messages and immediately exits, destroying the container. Will be run only of the environment variable `PWSHSCRIPTFILE` is not set within the container.
-    * `Microsoft.PowerShell_profile.ps1` : Powershell standard autostart file under Linux. Located in `` . Implements extra logic to guarantee a save working environment. Starts a standard script only if no special script is named using the environment variable `PWSHSCRIPTFILE`. Even if such a script is named it will first look if it exists in the mounted working directory and will use this as a first choice. If there is no existing script in trhe working directoy it will copy it form the container itself. If nothing is being found there it will exit the container. The script will be started only if there is no powershell-process already running. This is the case if the container starts. If an terminal is being started from external it will not start the main monitor script and just acts as an interactive shell e.g. for debugging purpuses.
+  * `dobuild.sh` : Creates a new docker image based on current `Dockerfile`
+  * `dojmonitord.sh` : Runs a docker container with the image `weseit/pwshddebian11`
+  * `dorenamegitbranch.ps1` : Does git actions after a remote branch has been renamed
+  * `dosave.sh` : Saves the docker image `weseit/pwshddebian11` into `weseit_pwshddebian11.tar.gz`
+  * `dosetgitremote.ps1` : set remote git url to a ssh based one
+  * `dotestjmonitord.ps1` : Runs a test container with working mounted to `./workdir` on Windows Powershell
+  * `dotestjmonitord.sh` : Outdated, May be reused later for another Linux environment to start a test container with specific path settings
+  * `dotestjmonitordnas.sh` : Runs a test container with working mounted to `./workdir` on my Synology NAS environment
+  * `JMonitor.ps1` : The main monitor Powershell script doing the ICMP/ping requests and writing data into the CSV-file for further processing.
+  * `JStandard.ps1` : Standard Powershell script in container. Writes startup messages and immediately exits, destroying the container. Will be run only of the environment variable `PWSHSCRIPTFILE` is not set within the container.
+  * `Microsoft.PowerShell_profile.ps1` : Powershell standard autostart file under Linux. Located in `` . Implements extra logic to guarantee a save working environment. Starts a standard script only if no special script is named using the environment variable `PWSHSCRIPTFILE`. Even if such a script is named it will first look if it exists in the mounted working directory and will use this as a first choice. If there is no existing script in trhe working directoy it will copy it form the container itself. If nothing is being found there it will exit the container. The script will be started only if there is no powershell-process already running. This is the case if the container starts. If an terminal is being started from external it will not start the main monitor script and just acts as an interactive shell e.g. for debugging purpuses.
 * Missing : MS-Excel sheet using the CSV as a database input and showing the graphical output. I plan to use the CSV to learn about Grafana/InfluxDB later if I find some time. But for now Excel does the job.
