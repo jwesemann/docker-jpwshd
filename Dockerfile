@@ -1,6 +1,3 @@
-#FROM mcr.microsoft.com/powershell:lts-debian-buster-slim-20210316
-#FROM mcr.microsoft.com/powershell:lts-debian-bullseye-slim-20211021
-#FROM mcr.microsoft.com/powershell:7.2.0-rc.1-debian-bullseye-slim-20211102
 FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
 
 ENV LANG de_DE.UTF-8 
@@ -21,7 +18,10 @@ RUN apt-get update \
 
 RUN touch /root/.jwedocker
 WORKDIR /root
-RUN mkdir .config && mkdir .config/powershell && mkdir workdir
+RUN touch .jwedocker \
+    && mkdir .config \
+    && mkdir .config/powershell \
+    && mkdir workdir
 COPY Microsoft.PowerShell_profile.ps1 .config/powershell
 COPY JMonitor.ps1 .
 COPY JStandard.ps1 .
