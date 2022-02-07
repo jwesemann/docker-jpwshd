@@ -3,8 +3,8 @@ Write-Output "$scriptname is starting"
 Write-Output "Jörgs Docker-Profile 20210402 @ $profile"
 
 # working from Home-Dir
-cd ~
-ls -al
+Set-Location ~
+Get-ChildItem -al
 
 # check & preparing mountable dir content
 $workdir = "~/workdir"
@@ -33,9 +33,9 @@ if (Test-Path -Path $workfilepath -PathType Leaf) {
 }
 
 #finally run it only if there is no other pwsh-process already running
-if ( (Get-Process | where Name -eq "pwsh").Count -le 1) {
+if ( (Get-Process | Where-Object Name -eq "pwsh").Count -le 1) {
     Write-Output "First pwsh instance is running. Start script $workfile in $workdir"
-    cd $workdir
+    Set-Location $workdir
     . ./$workfile
 } else {
     Write-Output "This is NOT the first pwsh instance running. Will NOT start $workfile in $workdir"
