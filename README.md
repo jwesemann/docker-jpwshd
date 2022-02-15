@@ -2,11 +2,11 @@
 
 ## Overview
 
-Use a lts-debian-buster-slim image from Microsoft Powershell team with additional German locales to start a script (default or configured by environment variable).
+This small framework can be used to start (looping) Powershell-Scripts in a well defined unix server environment acting as "server daemons".
+
+It uses a lts-debian-buster-slim Docker-image from Microsoft Powershell team with additional German locales to start a script (default or configured by environment variable). Please visit <https://hub.docker.com/_/microsoft-powershell> for more information about these Docker-images.
 
 The included script "JMonitor.ps1" periodically pings (ICMP request) a well defined webserver and writes the times needed into a CSV-file. Any preexistung files will be reused (not overwritten) and the output CSV-file will be extendend.
-
-This little framework can be used to start (looping) Powershell-Scripts in a well defined unix server environment acting as "server daemons".
 
 In general this Dockerfile and the underlying simple scripts should run in 3 environments : Windows 10 native, Windows 10 WSL Ubuntu 20.04, Synology DSM718+ . I plan to extend this to be an multi-architecture docker image for my Raspberry 3/4 but need some learning how to achieve this.
 
