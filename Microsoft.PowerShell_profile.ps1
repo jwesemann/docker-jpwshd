@@ -1,10 +1,13 @@
 ﻿$scriptname = & {$MyInvocation.ScriptName}
 Write-Output "$scriptname is starting"
-Write-Output "Jörgs Docker-Profile 20210402 @ $profile"
+Write-Output "Jörgs Docker-Profile 20220524 @ $profile"
 
 # working from Home-Dir
 Set-Location ~
-Get-ChildItem -al
+Get-ChildItem -Attributes Normal,hidden,directory
+			
+
+
 
 # check & preparing mountable dir content
 $workdir = "~/workdir"
