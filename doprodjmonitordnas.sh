@@ -1,6 +1,6 @@
 #!/bin/sh
 
-RUNENV="_test"
+RUNENV=""
 DDIR="/volume1/docker/docker-jpwshd-debian/datadir${RUNENV}"
 WDIR=${DDIR}/workdir
 
@@ -20,5 +20,5 @@ fi
 
 
 touch ${WDIR}/JMonitor.csv
-docker run --name jwe_jmonitord_debian11_pwsh72${RUNENV} --rm --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  weseit/pwshddebian11
-tail -f ${WDIR}/JMonitor.csv
+docker run --name jwe_jmonitord_debian11_pwsh72${RUNENV} --rm --env PWSHSCRIPTFILE=JMonitorDebian11.ps1 -d -v ${WDIR}:/root/workdir  weseit/pwshddebian11
+tail -f ${WDIR}/JMonitorDebian11.csv
