@@ -6,7 +6,7 @@ This small framework can be used to start (looping) Powershell-Scripts in a well
 
 It uses a debian Docker-image from Microsoft Powershell team with additional German locales to start a script (default or configured by environment variable). Please visit <https://hub.docker.com/_/microsoft-powershell> for more information about these Docker-images.
 
-To make this implementation run on ARM devices like the Raspberyy PI-4 (my development environment) I added 2nd Dockerfile-armv8 which is not dependent on the Microsoft Docker image anymore but only on the official Debian image `debian:latest`. It will install powershell into /root/powershell and run /root/powershell/pwsh .
+To make this implementation run on ARM devices like the Raspberyy PI-4 (my development environment) I added 2nd Dockerfile-armv8 which is not dependent on the Microsoft Docker image anymore but only on the official Debian image `debian:latest`. It will install powershell into /root/powershell and run /root/powershell/pwsh . Please visit <https://hub.docker.com/_/debian> to get more information on the used Debian image.
 
 The included script `JMonitor.ps1` periodically pings (ICMP request) a well defined webserver and writes the times needed into a CSV-file. Any pre-existing files will be reused (not overwritten) and the output data will be appended to the CSV-file.
 
