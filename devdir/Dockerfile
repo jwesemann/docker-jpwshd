@@ -1,5 +1,5 @@
 #FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
-FROM mcr.microsoft.com/powershell:7.2-debian-bullseye-slim
+FROM mcr.microsoft.com/powershell:7.3-debian-bullseye-slim
 
 ENV LANG de_DE.UTF-8 
 ENV LC_ALL de_DE.UTF-8
@@ -18,7 +18,7 @@ RUN apt-get update \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && dpkg-reconfigure --frontend=noninteractive tzdata
 
-RUN touch /root/.jwedocker
+#RUN touch /root/.jwedocker
 WORKDIR /root
 RUN touch .jwedocker \
     && mkdir .config \
