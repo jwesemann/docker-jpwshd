@@ -20,14 +20,14 @@ RUN apt-get update \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && dpkg-reconfigure --frontend=noninteractive tzdata \
     && apt-get install wget -y \
-    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/powershell-7.2.5-linux-arm64.tar.gz \
+	&& wget https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/powershell-7.3.0-linux-arm64.tar.gz \
     && mkdir ~/powershell \
-    && tar -xvf ./powershell-7.2.5-linux-arm64.tar.gz -C ~/powershell \
+    && tar -xvf ./powershell-7.3.0-linux-arm64.tar.gz -C ~/powershell \
     && rm -f /powershell*.tar.gz
 
 
 
-RUN touch /root/.jwedocker
+#RUN touch /root/.jwedocker
 WORKDIR /root
 RUN touch .jwedocker \
     && mkdir .config \
