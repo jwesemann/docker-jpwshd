@@ -1,5 +1,5 @@
 #FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
-FROM mcr.microsoft.com/powershell:7.3-debian-bullseye-slim
+FROM debian:12-slim
 
 ENV LANG de_DE.UTF-8 
 ENV LC_ALL de_DE.UTF-8
@@ -16,7 +16,13 @@ RUN apt-get update \
     && update-locale LANG=de_DE.UTF-8 \
     && apt-get -y install tzdata \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
-    && dpkg-reconfigure --frontend=noninteractive tzdata
+    && dpkg-reconfigure --frontend=noninteractive tzdata \
+    && apt-get install wget -y \
+    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl.tar.gz \
+    && mkdir ~/powershell \
+    && tar -xvf ./powershell-7.4.1-linux-arm64.tar.gz -C ~/powershell \
+    && chmod ugo+x ~/powershell/pwsh \
+    && rm -f /powershell*.tar.gz
 
 #RUN touch /root/.jwedocker
 WORKDIR /root

@@ -1,4 +1,4 @@
 #!/bin/sh
-docker build -t weseit/pwshddebian11 -f Dockerfile-armv8 .
+docker build -t weseit/pwshddebian12 -f Dockerfile-armv8 .
 
 
