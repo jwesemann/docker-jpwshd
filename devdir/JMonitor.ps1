@@ -23,13 +23,13 @@
 
  param(
     [switch]$help=$false,
-    [Parameter(Mandatory=$false)][ValidateRange(1000,120000)][int]$sleeptime = 25000,
+    [Parameter(Mandatory=$false)][ValidateRange(1000,120000)][int]$sleeptime = 57000,
     [Parameter(Mandatory=$false)][ValidateRange(1,10)][int]$numpings = 4
 )
 
 # My own process
 $me = $MyInvocation.MyCommand.Name
-$version = "20210402-a"
+$version = "20240201-a"
 
  # show syntax
  if ($help) {
@@ -47,11 +47,14 @@ $stopfile = Split-Path $MyInvocation.MyCommand.Name -LeafBase
 $csvfile = $stopfile + ".csv" 
 $stopfile = $stopfile + ".stop"
 
+Write-Output "$me started in Version $version"
+Write-Output "numpings=$numpings , sleeptime=$sleeptime , Debug=$DebugPreference , Verbose=$VerbosePreference"
+
 if (Test-Path -Path $stopfile -PathType Leaf) {
     Write-Output "Found STOP-File $stopfile. Aborting Program before first loop"
     exit 98
 } else {
-    Write-Output "$me started in Version $version"
+    Write-Output "No STOP-File ($stopfile) found - continue"    
 }
 
 filter timestamp {"$(Get-Date -Format G) ,  $_"}
