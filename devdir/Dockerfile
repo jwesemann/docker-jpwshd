@@ -17,15 +17,22 @@ RUN apt-get update \
     && apt-get -y install tzdata \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && dpkg-reconfigure --frontend=noninteractive tzdata \
-    && apt-get install wget -y \
-    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz \
-    && mkdir ~/powershell \
-    && tar -xvf ./powershell-7.4.2-linux-musl-x64.tar.gz -C ~/powershell \
-    && chmod ugo+x ~/powershell/pwsh \
-    && rm -f /powershell*.tar.gz
+    && apt-get install -y wget
 
-#RUN touch /root/.jwedocker
+
+# replaced by apt install of pwsh to get all dependencies like lib-icu
+#    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz \
+#    && mkdir ~/powershell \
+#    && tar -xvf ./powershell-7.4.2-linux-musl-x64.tar.gz -C ~/powershell \
+#    && chmod ugo+x ~/powershell/pwsh \
+#    && rm -f /powershell*.tar.gz
+
 WORKDIR /root
+
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell_7.4.2-1.deb_amd64.deb \
+    && apt install -y ./powershell_7.4.2-1.deb_amd64.deb \
+    && rm ./powershell_7.4.2-1.deb_amd64.deb
+
 RUN touch .jwedocker \
     && mkdir .config \
     && mkdir .config/powershell \
@@ -33,4 +40,7 @@ RUN touch .jwedocker \
 COPY Microsoft.PowerShell_profile.ps1 .config/powershell
 COPY JMonitor.ps1 .
 COPY JStandard.ps1 .
+
+CMD /usr/bin/pwsh
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
 

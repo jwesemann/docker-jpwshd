@@ -1,3 +1,3 @@
 #!/bin/sh
-sudo docker build -t weseit/pwshddebian11 .
+sudo docker build -t weseit/pwshddebian12 .
 
