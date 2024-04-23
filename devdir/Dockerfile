@@ -1,5 +1,5 @@
 #FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
-FROM debian:12-slim
+FROM debian:12.5-slim
 
 ENV LANG de_DE.UTF-8 
 ENV LC_ALL de_DE.UTF-8
@@ -18,9 +18,9 @@ RUN apt-get update \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && dpkg-reconfigure --frontend=noninteractive tzdata \
     && apt-get install wget -y \
-    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-musl.tar.gz \
+    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-musl-x64.tar.gz \
     && mkdir ~/powershell \
-    && tar -xvf ./powershell-7.4.1-linux-arm64.tar.gz -C ~/powershell \
+    && tar -xvf ./powershell-7.4.2-linux-musl-x64.tar.gz -C ~/powershell \
     && chmod ugo+x ~/powershell/pwsh \
     && rm -f /powershell*.tar.gz
 

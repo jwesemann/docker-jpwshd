@@ -20,5 +20,5 @@ fi
 
 
 touch ${WDIR}/JMonitor.csv
-sudo docker run --name jwe_jmonitord_debian12_pwsh74${RUNENV} --restart=always --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  weseit/pwshddebian12
+sudo docker run --name jwe_jmonitord_debian12.5_pwsh7.4.2${RUNENV} --restart=always --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  weseit/pwshddebian12
 tail -f ${WDIR}/JMonitor.csv
