@@ -29,7 +29,7 @@
 
 # My own process
 $me = $MyInvocation.MyCommand.Name
-$version = "20240201-a"
+$version = "20241207-a"
 
  # show syntax
  if ($help) {
