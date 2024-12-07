@@ -1,5 +1,5 @@
 #FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
-FROM debian:12.5-slim
+FROM debian:12.8-slim
 
 ENV LANG de_DE.UTF-8 
 ENV LC_ALL de_DE.UTF-8
@@ -29,9 +29,9 @@ RUN apt-get update \
 
 WORKDIR /root
 
-RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell_7.4.2-1.deb_amd64.deb \
-    && apt install -y ./powershell_7.4.2-1.deb_amd64.deb \
-    && rm ./powershell_7.4.2-1.deb_amd64.deb
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/powershell_7.4.6-1.deb_amd64.deb \
+    && apt install -y ./powershell_7.4.6-1.deb_amd64.deb \
+    && rm ./powershell_7.4.6-1.deb_amd64.deb
 
 RUN touch .jwedocker \
     && mkdir .config \
