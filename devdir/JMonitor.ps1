@@ -10,7 +10,7 @@
     
 	.EXAMPLE
 	JMonitor
-	Starts endless ping-loop with a default sleeptime of 5000 milliseconds and default numpings of 3
+	Starts endless ping-loop with a default sleeptime of 57000 milliseconds ~ 1 minute and default numpings of 4
 
     .EXAMPLE
     JMonitor -sleeptime 7000 -numpings 4
