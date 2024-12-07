@@ -11,7 +11,7 @@ To make this implementation run on ARM devices like the Raspberyy PI-4 (my devel
 The included script `JMonitor.ps1` periodically pings (ICMP request) a well defined webserver and writes the times needed into a CSV-file. Any pre-existing files will be reused (not overwritten) and the output data will be appended to the CSV-file.
 
 
-In general this `Dockerfile` and the underlying simple scripts should run in 3 environments : Windows 10 native, Windows 10 WSL Ubuntu 20.04, Synology DSM718+ . I plan to extend this to be an multi-architecture docker image for my Raspberry 3/4 but need some learning how to achieve this.
+In general this `Dockerfile` and the underlying simple scripts should run in several environments : Windows 10/11 native, Windows 10/11 WSL Ubuntu 20.04, Synology DSM718+, Kali-Linux native . I plan to extend this to be an multi-architecture docker image for my Raspberry 3/4 but need some learning how to achieve this.
 
 ## Startup-Hook
 
@@ -24,7 +24,7 @@ The shell-code makes sure that the main functional loop will **only be started i
 * `Dockerfile` : based on Microsofts official Powershell image for Debian
 * `dobuild.sh` : Starts the docker build sequence based on Microsofts docker image
 * `Dockerfile_armv8` : based on Debians docker image. Will add Powershell with own install routines. So no dependency on Microsoft docker repo anymore.
-* `dobuild.sh` : Starts the docker build sequence based on Debians latest docker image
+* `dobuild-armv8.sh` : Starts the docker build sequence based on Debians latest docker image
 * `Microsoft.PowerShell_profile.ps1` : Checking environment variable PWSHSCRIPTFILE and directory "/root/workdir" which is mounted to the docker host to decide which specific Powershell-script will be started
 * `JStandard.ps1` : small Powershell-script which will be copied from the image into workdir and being started if no valid combination to run from the environment-variable and directory-content is found
 * `JMonitor.ps1` : The initial script I wrote for my client PC to monitor ICMP-performance of my internet connection. It is based on a much older NT-CMD version. Target of this project was to make this functionality  available in docker on my different servers (Synology NAS 718+, Raspberry Pi, Windows) to run 24/7/365 independently from my client workstation. I already collected > 1 million data points giving me an interesting overview over the behavior and quality of the internet line and the reliability of my internal network (router / NAS downtimes)
