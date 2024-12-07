@@ -1,11 +1,12 @@
 #FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
 FROM debian:12.8-slim
 
-ENV LANG de_DE.UTF-8 
-ENV LC_ALL de_DE.UTF-8
-ENV LANGUAGE de_DE.UTF-8
-ENV TZ 'Europe/Berlin'
-ENV POWERSHELL_TELEMETRY_OPTOUT 1
+ENV LANG=de_DE.UTF-8 
+ENV LC_ALL=de_DE.UTF-8
+ENV LANGUAGE=de_DE.UTF-8
+ENV TZ='Europe/Berlin'
+ENV POWERSHELL_TELEMETRY_OPTOUT=1
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
@@ -41,6 +42,6 @@ COPY Microsoft.PowerShell_profile.ps1 .config/powershell
 COPY JMonitor.ps1 .
 COPY JStandard.ps1 .
 
-CMD /usr/bin/pwsh
+CMD ["/usr/bin/pwsh"]
 #ENTRYPOINT ["tail", "-f", "/dev/null"]
 
