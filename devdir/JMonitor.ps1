@@ -29,7 +29,7 @@
 
 # My own process
 $me = $MyInvocation.MyCommand.Name
-$version = "20241207-a"
+$version = "20250527-a"
 
  # show syntax
  if ($help) {
@@ -57,7 +57,7 @@ if (Test-Path -Path $stopfile -PathType Leaf) {
     Write-Output "No STOP-File ($stopfile) found - continue"    
 }
 
-filter timestamp {"$(Get-Date -Format G) ,  $_"}
+filter timestamp {"$(Get-Date -Format "dd.MM.yyyy HH:mm:ss") ,  $_"}
 function onepingcascade($dest) {
     #$args
     $ping = Test-Connection -ComputerName $dest -count $numpings
