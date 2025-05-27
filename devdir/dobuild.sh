@@ -1,3 +1,3 @@
 #!/bin/sh
-sudo docker build -t weseit/pwshddebian12 -f Dockerfile .
+sudo docker build -t weseit/pwshd -f Dockerfile .
 

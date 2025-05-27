@@ -3,6 +3,7 @@
 RUNENV=""
 DDIR="/volume1/docker/docker-jpwshd-debian/datadir${RUNENV}"
 WDIR=${DDIR}/workdir
+CNAME=jpwshd_debian12.8_pwsh7.4.6${RUNENV}
 
 if [ -d "$DDIR" ]; then
 	echo "$DDIR already exists"
@@ -20,5 +21,5 @@ fi
 
 
 touch ${WDIR}/JMonitor.csv
-sudo docker run --name jwe_jmonitord_debian12.8_pwsh7.4.6${RUNENV} --restart=always --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  weseit/pwshddebian12
+sudo docker run --name $CNAME --restart=always --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  weseit/pwshddebian12
 tail -f ${WDIR}/JMonitor.csv
