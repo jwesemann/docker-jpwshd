@@ -1,5 +1,4 @@
-#FROM mcr.microsoft.com/powershell:7.2.1-debian-bullseye-slim-20211215
-FROM debian:12.8-slim
+FROM debian:stable-slim
 
 ENV LANG=de_DE.UTF-8 
 ENV LC_ALL=de_DE.UTF-8
