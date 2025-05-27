@@ -1,16 +1,15 @@
 ﻿$scriptname = & {$MyInvocation.ScriptName}
 Write-Output "$scriptname is starting"
-Write-Output "Jörgs Docker-Profile 20220524 @ $profile"
+Write-Output "Jörgs Docker-Profile 20250527 @ $profile"
 
 # working from Home-Dir
 Set-Location ~
-Get-ChildItem -Attributes Normal,hidden,directory
-			
+Get-ChildItem -Attributes normal,hidden,directory
 
-
-
-# check & preparing mountable dir content
+# show, check & preparing mountable dir content
 $workdir = "~/workdir"
+Get-ChildItem -Path "${workdir}"
+Write-Output ""
 
 $workfile = "$env:PWSHSCRIPTFILE"
 if ([string]::IsNullOrEmpty($workfile)) {
@@ -27,7 +26,7 @@ Write-Output "Workfilepath = $workfilepath"
 if (Test-Path -Path $workfilepath -PathType Leaf) {
     Write-Output "Found $workfile in mounted $workdir - will not copy image default Script and start $workfile"
 } elseif (Test-Path -Path "~/$workfile" -PathType Leaf) {
-    Write-Output "No existing $workfile in mounted $workdir , copy standard image file into $workdir and start $workfile afterwards"
+    Write-Output "No existing $workfile in mounted $workdir , copy standard image-file-version into $workdir and start $workfile afterwards"
     Write-Output "Execute = Copy-Item -Path `"~/$workfile`" -Destination `"$workfilepath`" "
     Copy-Item -Path "~/$workfile" -Destination "$workfilepath"
 } else {
