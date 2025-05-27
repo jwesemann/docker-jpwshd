@@ -30,9 +30,9 @@ RUN apt-get update \
 
 WORKDIR /root
 
-RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/powershell_7.4.6-1.deb_amd64.deb \
-    && apt install -y ./powershell_7.4.6-1.deb_amd64.deb \
-    && rm ./powershell_7.4.6-1.deb_amd64.deb
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.1/powershell_7.5.1-1.deb_amd64.deb \
+    && apt install -y ./powershell_7.5.1-1.deb_amd64.deb \
+    && rm ./powershell_*.deb
 
 RUN touch .jwedocker \
     && mkdir .config \
