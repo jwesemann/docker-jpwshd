@@ -10,6 +10,9 @@ projectName=${a##*-}
 echo "Project = $projectName @ $scriptName @ $fullDirName"
 
 
-docker update --restart=on-failure:3 ${projectName}
+docker update --restart=unless-stopped ${projectName}
 #'no', 'always', 'on-failure:3', or 'unless-stopped'
+
+docker inspect --format '{{json .HostConfig.RestartPolicy}}' ${projectName}
+
 
