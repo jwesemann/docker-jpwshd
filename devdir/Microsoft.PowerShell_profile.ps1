@@ -1,6 +1,11 @@
 ﻿$scriptname = & {$MyInvocation.ScriptName}
 Write-Output "$scriptname is starting"
 Write-Output "Jörgs Docker-Profile 20250527 @ $profile"
+Write-Output ""
+
+$envglobinvariant= "$env:ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT"
+Write-Output "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=$env{globinvariant}"
+Write-Output ""
 
 # working from Home-Dir
 Set-Location ~
