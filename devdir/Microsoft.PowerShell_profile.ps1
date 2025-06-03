@@ -1,10 +1,11 @@
 ﻿$scriptname = & {$MyInvocation.ScriptName}
 Write-Output "$scriptname is starting"
-Write-Output "Jörgs Docker-Profile 20250527 @ $profile"
+Write-Output "Jörgs Docker-Profile 20250602 @ $profile"
 Write-Output ""
 
-$envglobinvariant= "$env:ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT"
-Write-Output "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=$env{globinvariant}"
+Write-Output "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=$env:DOTNET_SYSTEM_GLOBALIZATION_INVARIANT"
+Write-Output "Current culture active="
+Get-Culture | Format-List -Property *
 Write-Output ""
 
 # working from Home-Dir

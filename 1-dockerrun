@@ -1,1 +1,1 @@
-sudo docker run --name $CNAME --restart=on-failure:3 --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  $imageName
+sudo docker run --name $CNAME --restart=on-failure:3 --env DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=0 --env PWSHSCRIPTFILE=JMonitor.ps1 -d -v ${WDIR}:/root/workdir  $imageName
