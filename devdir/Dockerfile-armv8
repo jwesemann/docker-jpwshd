@@ -20,11 +20,11 @@ RUN apt-get update \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && dpkg-reconfigure --frontend=noninteractive tzdata \
     && apt-get install wget -y \
-    && wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.1/powershell-7.5.1-linux-arm64.tar.gz \
+    && wget -O powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v7.5.2/powershell-7.5.2-linux-arm64.tar.gz \
     && mkdir ~/powershell \
-    && tar -xvf ./powershell-7.5.1-linux-arm64.tar.gz -C ~/powershell \
+    && tar -xvf ./powershell.tar.gz -C ~/powershell \
     && chmod ugo+x ~/powershell/pwsh \
-    && rm -f /powershell*.tar.gz
+    && rm -f /powershell.tar.gz
 
 
 

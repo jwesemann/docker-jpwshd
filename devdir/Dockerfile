@@ -1,4 +1,7 @@
-FROM debian:stable-slim
+FROM debian:bookworm-slim
+# FROM debian:trixie-slim
+# FROM debian:stable-slim
+# debian13 (trixie) is not working yet, see https://github.com/PowerShell/PowerShell/pull/25866
 
 ENV LANG=de_DE.UTF-8 
 ENV LC_ALL=de_DE.UTF-8
@@ -29,9 +32,10 @@ RUN apt-get update \
 
 WORKDIR /root
 
-RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.1/powershell_7.5.1-1.deb_amd64.deb \
-    && apt install -y ./powershell_7.5.1-1.deb_amd64.deb \
-    && rm ./powershell_*.deb
+# Update URL for newest powershell version
+RUN wget -O powershell.deb https://github.com/PowerShell/PowerShell/releases/download/v7.5.2/powershell_7.5.2-1.deb_amd64.deb \
+    && apt install -y ./powershell.deb \
+    && rm ./powershell.deb
 
 RUN touch .jwedocker \
     && mkdir .config \
