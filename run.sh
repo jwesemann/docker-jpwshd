@@ -1,5 +1,5 @@
 #!/bin/sh
-
+RUNENV=""
 scriptName="${0##*/}"
 fullDirName=$PWD
 a="${PWD##*/}"
