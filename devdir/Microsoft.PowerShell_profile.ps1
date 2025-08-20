@@ -1,6 +1,6 @@
 ﻿$scriptname = & {$MyInvocation.ScriptName}
 Write-Output "$scriptname is starting"
-Write-Output "Jörgs Docker-Profile 20250602 @ $profile"
+Write-Output "Jörgs powershell-profile under Docker version 20250820-a @ $profile"
 Write-Output ""
 
 Write-Output "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=$env:DOTNET_SYSTEM_GLOBALIZATION_INVARIANT"
@@ -30,13 +30,13 @@ Write-Output "Workfilepath = $workfilepath"
 
 # Look for existing mounted scriptfile and do not overwrite. Copy only if no scriptfile is existinf
 if (Test-Path -Path $workfilepath -PathType Leaf) {
-    Write-Output "Found $workfile in mounted $workdir - will not copy image default Script and start $workfile"
+    Write-Output "Found existing $workfile in mounted $workdir - will not copy image default Script and start existing $workfile"
 } elseif (Test-Path -Path "~/$workfile" -PathType Leaf) {
-    Write-Output "No existing $workfile in mounted $workdir , copy standard image-file-version into $workdir and start $workfile afterwards"
+    Write-Output "No existing $workfile found in mounted $workdir , will copy standard image-file-version into $workdir and start $workfile afterwards"
     Write-Output "Execute = Copy-Item -Path `"~/$workfile`" -Destination `"$workfilepath`" "
     Copy-Item -Path "~/$workfile" -Destination "$workfilepath"
 } else {
-    Write-Output "No existing $workfile in $workdir and no default version in image - exit script/container"
+    Write-Output "No existing $workfile found in $workdir and no default version in image - exit script/container"
     exit 99
 }
 

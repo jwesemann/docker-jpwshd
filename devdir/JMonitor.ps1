@@ -29,7 +29,7 @@
 
 # My own process
 $me = $MyInvocation.MyCommand.Name
-$version = "20250527-a"
+$version = "20250820-a"
 
  # show syntax
  if ($help) {
@@ -86,7 +86,7 @@ while ($true) {
     $ret
     $ret | Out-File $csvfile -Append
     if (Test-Path -Path $stopfile -PathType Leaf) {
-        Write-Output "Found STOP-File $stopfile. Aborting Program loop"
+        Write-Output "Found STOP-File $stopfile. Aborting currently running program loop"
         exit 99
     }
     Start-Sleep -Milliseconds $sleeptime
