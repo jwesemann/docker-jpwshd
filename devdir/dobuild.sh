@@ -1,3 +1,3 @@
 #!/bin/sh
-sudo docker build -t weseit/pwshd -f Dockerfile .
+sudo docker build --no-cache -t weseit/pwshd -f Dockerfile .
 
